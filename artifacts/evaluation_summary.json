@@ -1,0 +1,365 @@
+{
+  "project": "Lanka AutoPrice AI \u2014 Sri Lankan Vehicle Price Prediction Using Ensemble Learning",
+  "price_unit": "LKR Lakhs (1 Lakh = Rs. 100,000 = LKR 0.1 Million)",
+  "dataset_source": "Kaggle \u2014 SriLankan Vehicle(Car) Price Dataset (scraped from Sri Lankan marketplaces, Dec 2024 \u2013 Feb 2025)",
+  "dataset_audit": {
+    "raw_rows": 9788,
+    "raw_columns": 17,
+    "missing_values": 0,
+    "exact_duplicates_all_cols": 0,
+    "exact_duplicates_excl_index": 18,
+    "cross_date_reposts_excl_date": 252,
+    "synthetic_mileage_match_pct": 100.0,
+    "yom_mileage_correlation": -1.0,
+    "date_min": "2024-12-03",
+    "date_max": "2025-02-05",
+    "unique_brands": 50,
+    "unique_models": 1555,
+    "unique_towns": 107,
+    "price_min_lakhs": 2.65,
+    "price_median_lakhs": 43.0,
+    "price_mean_lakhs": 53.46,
+    "price_p99_lakhs": 225.0,
+    "price_max_lakhs": 790.0,
+    "yom_min": 1956,
+    "yom_max": 2024,
+    "clean_rows": 9770,
+    "duplicates_removed": 18
+  },
+  "features": {
+    "numerical": [
+      "Vehicle_Age",
+      "Engine (cc)",
+      "Facility_Count",
+      "AIR CONDITION",
+      "POWER STEERING",
+      "POWER MIRROR",
+      "POWER WINDOW"
+    ],
+    "categorical_ohe": [
+      "Brand",
+      "Gear",
+      "Fuel Type",
+      "Town",
+      "Leasing",
+      "Condition"
+    ],
+    "categorical_target_encoded": [
+      "Model",
+      "Brand_Model"
+    ],
+    "excluded_features": {
+      "Unnamed: 0": "Row index identifier (non-predictive)",
+      "Date": "Advertisement date \u2014 unavailable at inference time (used strictly for chronological split validation)",
+      "Millage(KM)": "100% deterministically equal to (2025 - YOM) * 11,000 (r = -1.0000); dropped to prevent exact multicollinearity with Vehicle_Age"
+    }
+  },
+  "train_size": 7816,
+  "test_size": 1954,
+  "random_state": 42,
+  "train_metrics": {
+    "Linear Regression": {
+      "MAE": 9.0015,
+      "RMSE": 14.9036,
+      "R2": 0.8752,
+      "MedAE": 6.1,
+      "MAPE_pct": 25.94
+    },
+    "Random Forest": {
+      "MAE": 3.3681,
+      "RMSE": 8.8196,
+      "R2": 0.9563,
+      "MedAE": 1.4699,
+      "MAPE_pct": 8.86
+    },
+    "Gradient Boosting": {
+      "MAE": 4.124,
+      "RMSE": 8.2561,
+      "R2": 0.9617,
+      "MedAE": 2.3878,
+      "MAPE_pct": 11.95
+    },
+    "Stacking Regressor": {
+      "MAE": 3.5417,
+      "RMSE": 8.0484,
+      "R2": 0.9636,
+      "MedAE": 1.7871,
+      "MAPE_pct": 9.62
+    }
+  },
+  "test_metrics": {
+    "Linear Regression": {
+      "MAE": 11.4297,
+      "RMSE": 27.1614,
+      "R2": 0.6894,
+      "MedAE": 6.7759,
+      "MAPE_pct": 28.59
+    },
+    "Random Forest": {
+      "MAE": 5.6587,
+      "RMSE": 19.3308,
+      "R2": 0.8427,
+      "MedAE": 2.146,
+      "MAPE_pct": 13.11
+    },
+    "Gradient Boosting": {
+      "MAE": 6.0307,
+      "RMSE": 19.246,
+      "R2": 0.8441,
+      "MedAE": 2.755,
+      "MAPE_pct": 15.52
+    },
+    "Stacking Regressor": {
+      "MAE": 5.5655,
+      "RMSE": 18.829,
+      "R2": 0.8507,
+      "MedAE": 2.3224,
+      "MAPE_pct": 13.55
+    }
+  },
+  "train_times_sec": {
+    "Linear Regression": 0.52,
+    "Random Forest": 7.86,
+    "Gradient Boosting": 22.9,
+    "Stacking Regressor": 64.68
+  },
+  "cv_5fold": {
+    "Linear Regression": {
+      "MAE_mean": 11.0381,
+      "MAE_std": 0.4601,
+      "RMSE_mean": 21.9687,
+      "RMSE_std": 3.3783,
+      "R2_mean": 0.745,
+      "R2_std": 0.0366,
+      "MAE_folds": [
+        11.8073,
+        10.7878,
+        11.0093,
+        10.4169,
+        11.1691
+      ],
+      "RMSE_folds": [
+        27.3401,
+        18.5143,
+        21.6969,
+        18.4208,
+        23.8713
+      ],
+      "R2_folds": [
+        0.6853,
+        0.76,
+        0.7565,
+        0.795,
+        0.7281
+      ],
+      "cv_time_sec": 0.58
+    },
+    "Random Forest": {
+      "MAE_mean": 5.0975,
+      "MAE_std": 0.3563,
+      "RMSE_mean": 14.2099,
+      "RMSE_std": 3.5805,
+      "R2_mean": 0.8927,
+      "R2_std": 0.0362,
+      "MAE_folds": [
+        5.7441,
+        4.8612,
+        4.8145,
+        4.8434,
+        5.2245
+      ],
+      "RMSE_folds": [
+        20.0716,
+        10.4482,
+        13.9056,
+        10.677,
+        15.9469
+      ],
+      "R2_folds": [
+        0.8304,
+        0.9236,
+        0.9,
+        0.9311,
+        0.8787
+      ],
+      "cv_time_sec": 6.78
+    },
+    "Gradient Boosting": {
+      "MAE_mean": 5.546,
+      "MAE_std": 0.3029,
+      "RMSE_mean": 14.0131,
+      "RMSE_std": 3.311,
+      "R2_mean": 0.8958,
+      "R2_std": 0.0327,
+      "MAE_folds": [
+        6.0834,
+        5.2912,
+        5.2843,
+        5.4006,
+        5.6706
+      ],
+      "RMSE_folds": [
+        19.8135,
+        10.6969,
+        13.6044,
+        10.9939,
+        14.9569
+      ],
+      "R2_folds": [
+        0.8347,
+        0.9199,
+        0.9043,
+        0.927,
+        0.8933
+      ],
+      "cv_time_sec": 36.99
+    },
+    "Stacking Regressor": {
+      "MAE_mean": 5.9315,
+      "MAE_std": 0.4947,
+      "RMSE_mean": 14.52,
+      "RMSE_std": 2.9907,
+      "R2_mean": 0.8883,
+      "R2_std": 0.028,
+      "MAE_folds": [
+        6.7758,
+        6.0292,
+        5.261,
+        5.7098,
+        5.8818
+      ],
+      "RMSE_folds": [
+        19.4126,
+        11.9122,
+        14.0839,
+        11.1377,
+        16.0538
+      ],
+      "R2_folds": [
+        0.8413,
+        0.9006,
+        0.8974,
+        0.9251,
+        0.877
+      ],
+      "cv_time_sec": 233.15
+    }
+  },
+  "stacking_meta_learner": {
+    "meta_model": "RidgeCV",
+    "selected_alpha": 1000.0,
+    "intercept": -0.8874,
+    "base_weights": {
+      "Random Forest": 0.5327,
+      "Gradient Boosting": 0.4844
+    }
+  },
+  "split_robustness": {
+    "random_80_20": {
+      "description": "Standard 80/20 random split (random_state=42)",
+      "train_size": 7816,
+      "test_size": 1954,
+      "metrics": {
+        "Linear Regression": {
+          "MAE": 11.4297,
+          "RMSE": 27.1614,
+          "R2": 0.6894,
+          "MedAE": 6.7759,
+          "MAPE_pct": 28.59
+        },
+        "Random Forest": {
+          "MAE": 5.6587,
+          "RMSE": 19.3308,
+          "R2": 0.8427,
+          "MedAE": 2.146,
+          "MAPE_pct": 13.11
+        },
+        "Gradient Boosting": {
+          "MAE": 6.0307,
+          "RMSE": 19.246,
+          "R2": 0.8441,
+          "MedAE": 2.755,
+          "MAPE_pct": 15.52
+        },
+        "Stacking Regressor": {
+          "MAE": 5.5655,
+          "RMSE": 18.829,
+          "R2": 0.8507,
+          "MedAE": 2.3224,
+          "MAPE_pct": 13.55
+        }
+      }
+    },
+    "chronological_80_20": {
+      "description": "Chronological split (test >= 2025-02-02; verifies no temporal leakage)",
+      "cutoff_date": "2025-02-02",
+      "train_size": 7816,
+      "test_size": 1954,
+      "metrics": {
+        "Linear Regression": {
+          "MAE": 10.6378,
+          "RMSE": 21.4162,
+          "R2": 0.7547,
+          "MedAE": 6.4882,
+          "MAPE_pct": 27.72
+        },
+        "Random Forest": {
+          "MAE": 5.2634,
+          "RMSE": 14.4366,
+          "R2": 0.8885,
+          "MedAE": 2.1158,
+          "MAPE_pct": 13.34
+        },
+        "Gradient Boosting": {
+          "MAE": 5.6231,
+          "RMSE": 12.9699,
+          "R2": 0.91,
+          "MedAE": 2.8445,
+          "MAPE_pct": 13.98
+        },
+        "Stacking Regressor": {
+          "MAE": 5.2732,
+          "RMSE": 13.1387,
+          "R2": 0.9077,
+          "MedAE": 2.3659,
+          "MAPE_pct": 13.07
+        }
+      }
+    },
+    "grouped_brand_model": {
+      "description": "GroupShuffleSplit by Brand+Model (evaluates generalization to unseen vehicle models)",
+      "train_size": 7622,
+      "test_size": 2148,
+      "metrics": {
+        "Linear Regression": {
+          "MAE": 15.9398,
+          "RMSE": 25.7663,
+          "R2": 0.6236,
+          "MedAE": 10.4324,
+          "MAPE_pct": 54.69
+        },
+        "Random Forest": {
+          "MAE": 10.0554,
+          "RMSE": 17.8692,
+          "R2": 0.819,
+          "MedAE": 5.4224,
+          "MAPE_pct": 30.14
+        },
+        "Gradient Boosting": {
+          "MAE": 10.2394,
+          "RMSE": 17.5433,
+          "R2": 0.8255,
+          "MedAE": 5.8295,
+          "MAPE_pct": 33.59
+        },
+        "Stacking Regressor": {
+          "MAE": 11.4463,
+          "RMSE": 19.1856,
+          "R2": 0.7913,
+          "MedAE": 7.4922,
+          "MAPE_pct": 33.9
+        }
+      }
+    }
+  }
+}

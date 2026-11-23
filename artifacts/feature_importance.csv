@@ -1,0 +1,46 @@
+Model,Feature,RMSE_Increase_Mean,RMSE_Increase_Std
+Random Forest,Vehicle_Age,19.8377,1.0181
+Random Forest,Engine (cc),6.1961,0.7729
+Random Forest,Facility_Count,0.0214,0.0068
+Random Forest,AIR CONDITION,-0.0004,0.0006
+Random Forest,POWER STEERING,0.0012,0.0008
+Random Forest,POWER MIRROR,0.0168,0.0052
+Random Forest,POWER WINDOW,-0.0011,0.0023
+Random Forest,Brand,9.0206,1.0607
+Random Forest,Gear,0.8293,0.0873
+Random Forest,Fuel Type,0.4658,0.1136
+Random Forest,Town,0.1084,0.0349
+Random Forest,Leasing,0.015,0.0066
+Random Forest,Condition,0.0612,0.0174
+Random Forest,Model,3.8544,0.2739
+Random Forest,Brand_Model,17.1949,0.8362
+Gradient Boosting,Vehicle_Age,22.5796,0.8704
+Gradient Boosting,Engine (cc),7.5463,0.8274
+Gradient Boosting,Facility_Count,0.1327,0.0381
+Gradient Boosting,AIR CONDITION,-0.0051,0.001
+Gradient Boosting,POWER STEERING,-0.0005,0.0032
+Gradient Boosting,POWER MIRROR,0.0493,0.0525
+Gradient Boosting,POWER WINDOW,0.0005,0.0016
+Gradient Boosting,Brand,8.918,0.5658
+Gradient Boosting,Gear,0.8788,0.1297
+Gradient Boosting,Fuel Type,0.7449,0.1011
+Gradient Boosting,Town,0.2287,0.0724
+Gradient Boosting,Leasing,0.043,0.013
+Gradient Boosting,Condition,0.073,0.0127
+Gradient Boosting,Model,2.864,0.185
+Gradient Boosting,Brand_Model,13.6807,0.7357
+Stacking Regressor,Vehicle_Age,21.331,0.9653
+Stacking Regressor,Engine (cc),6.8117,0.8166
+Stacking Regressor,Facility_Count,0.0446,0.0132
+Stacking Regressor,AIR CONDITION,-0.0016,0.0004
+Stacking Regressor,POWER STEERING,0.0002,0.0016
+Stacking Regressor,POWER MIRROR,0.0304,0.0249
+Stacking Regressor,POWER WINDOW,-0.001,0.0011
+Stacking Regressor,Brand,8.9494,0.8334
+Stacking Regressor,Gear,0.7791,0.0853
+Stacking Regressor,Fuel Type,0.6091,0.0966
+Stacking Regressor,Town,0.1763,0.0544
+Stacking Regressor,Leasing,0.0284,0.008
+Stacking Regressor,Condition,0.068,0.0164
+Stacking Regressor,Model,2.9076,0.2306
+Stacking Regressor,Brand_Model,15.3913,0.809
